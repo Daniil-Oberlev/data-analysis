@@ -289,15 +289,13 @@ def task_19(df):
     print("\n\n\n")
 
 
-# Задание 20: Запись в Excel
+# Задание 20: Товары с наибольшим количеством продаж в каждой категории
 @ensure_dataset_loaded()
 def task_20(df):
     print("task_20")
     print("\n")
 
-    df.to_excel("sales_data_analysis.xlsx", index=False)
-    print("Данные записаны в 'sales_data_analysis.xlsx.'")
-
+    print(df.loc[df.groupby("Category")["Quantity"].idxmax()])
     print("\n\n\n")
 
 
