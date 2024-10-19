@@ -235,19 +235,27 @@ def task_17(df):
     customer_stats = df.groupby("Customer")["UnitPrice (Products)"].agg(
         ["mean", "median"]
     )
+
     max_average_customer = customer_stats["mean"].idxmax()
-    print(f"Клиент с наибольшей средней стоимостью: {max_average_customer}")
+    max_average_value = customer_stats["mean"].max()
+
+    print(
+        f"Клиент с наибольшей средней стоимостью: {max_average_customer} ({max_average_value:.2f})"
+    )
+
+    print("\nСредние и медианные стоимости для каждого клиента:")
+    print(customer_stats)
 
     print("\n\n\n")
 
 
 # Задание 18: Продажи по месяцам и график временного ряда
-@ensure_dataset_loaded(required_columns=["Sales", "Date"])
+@ensure_dataset_loaded(required_columns=["Sales", "OrderDate"])
 def task_18(df):
     print("task_18")
     print("\n")
 
-    df["Month"] = df["Date"].dt.to_period("M")
+    df["Month"] = df["OrderDate"].dt.to_period("M")
     sales_by_month = df.groupby("Month")["Sales"].sum()
     sales_by_month.plot()
     plt.title("Продажи по месяцам")
