@@ -107,12 +107,12 @@ def task_7(df):
 
 
 # Задание 8: Уникальные комбинации города и страны
-@ensure_dataset_loaded(required_columns=["City and Country"])
+@ensure_dataset_loaded(required_columns=["City and Counry"])
 def task_8(df):
     print("task_8")
     print("\n")
 
-    unique_city_country = df["City and Country"].drop_duplicates()
+    unique_city_country = df["City and Counry"].drop_duplicates()
     print("Уникальные комбинации города и страны:")
     print(unique_city_country)
 
